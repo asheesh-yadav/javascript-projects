@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container{
+    height: 100vh;
+    background: rgb(44, 20, 61);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fah{
+    margin-top: 20px;
+}
+ input{
+    margin-left: 20px;
+ }
+
+.container {
+    width: 400px;
+    height: 175px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 40px white;
+    padding-top: 50px;
+    background: white;
+  }
+</style>
+</head>
+<body>
+<section class="main-container">
+
+    <div class="container">
+      <h1>Temperature Converter</h1>
+      <div class="cel">
+          <label for="celsius">Celsius:</label>
+          <input type="number" id="celsius" placeholder="Enter temperature in Celsius">
+
+      </div>
+      <div class="fah">
+          <label for="fahrenheit">Fahrenheit:</label>
+          <input type="number" id="fahrenheit" placeholder="Enter temperature in Fahrenheit">
+
+      </div>
+    </div>
+</section>
+<script>
+  const celsiusInput = document.getElementById("celsius");
+  const fahrenheitInput = document.getElementById("fahrenheit");
+
+  celsiusInput.addEventListener("input", () => {
+    const celsiusValue = parseFloat(celsiusInput.value);
+    const fahrenheitValue = (celsiusValue * 9/5) + 32;
+    fahrenheitInput.value = isNaN(fahrenheitValue) ? "" : fahrenheitValue.toFixed(2);
+  });
+
+  fahrenheitInput.addEventListener("input", () => {
+    const fahrenheitValue = parseFloat(fahrenheitInput.value);
+    const celsiusValue = (fahrenheitValue - 32) * 5/9;
+    celsiusInput.value = isNaN(celsiusValue) ? "" : celsiusValue.toFixed(2);
+  });
+</script>
+</body>
+</html>
